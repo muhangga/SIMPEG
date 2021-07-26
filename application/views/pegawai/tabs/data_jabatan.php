@@ -10,51 +10,26 @@
                 <div class="col-md-9 col-sm-3 col-xs-12 col-lg-9 mt-3">
                     <table width="100%">
                         <tr>
-                            <td width="30%" class="tag pb-2">Jabatan</td>
-                            <td>: &nbsp&nbsp Muhamad Angga
+                            <td width="30%" class="tag pb-3">
+                                Jabatan
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="Direktur" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td width="30%" class="tag pb-2">TMT Jabatan</td>
-                            <td>: &nbsp&nbsp 12421412412412</td>
+                            <td class="tag pb-3">
+                                Tahun
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="2020" readonly>
+                            </td>
                         </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">Unit Kerja</td>
-                            <td>: &nbsp&nbsp Bogor, 06-03-2015</td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">Gol Capeg</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">TMT Capeg</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">Gol Akhir</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">TMT Gol Akhir</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" class="tag pb-2">Nama Fungsional</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
-                        </tr>
-
                     </table>
-                    <button class="btn btn-success px-5 mt-4">Edit</button>
+                    <a href="" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

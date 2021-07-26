@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-        $data['title'] = "Beranda";
+        $data['title'] = "SIMPEG BPATP - Beranda";
 
 		$this->load->view('component/sidebar');
         $this->load->view('component/header', $data);

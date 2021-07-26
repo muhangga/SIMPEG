@@ -35,7 +35,7 @@
 	font-weight: bold;
 }
 
-table td input {
+table td input[text] {
 	border: #045B29 6px solid;
 	background-color: #F3F3F3;
 }

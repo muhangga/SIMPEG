@@ -10,35 +10,44 @@
                 <div class="col-md-9 col-sm-3 col-xs-12 col-lg-9 mt-3">
                     <table width="100%">
                         <tr>
-                            <td width="30%" class="tag pb-2">Nama</td>
-                            <!-- <td>: &nbsp&nbsp Muhamad Angga
-                            </td> -->
-                            <td width="70%">
-                                <input type="text" class="form-control border-success">
+                            <td width="30%" class="tag pb-3">
+                                Nama
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="Muhamad Angga" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td width="30%" class="tag pb-2">NIP</td>
-                            <td>: &nbsp&nbsp 12421412412412</td>
+                            <td class="tag pb-3">
+                                NIK
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="32054541215454" readonly>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td width="30%" class="tag pb-2">Tempat/Tanggal Lahir</td>
-                            <td>: &nbsp&nbsp Bogor, 06-03-2015</td>
+                            <td class="tag mt-3">
+                                Tempat/Tanggal Lahir
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="Bogor, 06 Maret 2000" readonly>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td width="30%" class="tag pb-2">Alamat Rumah</td>
-                            <td>: &nbsp&nbsp Kampung cikereteg</td>
+                            <td class="tag pb-3">
+                                Alamat Rumah
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="Mekah" readonly>
+                            </td>
                         </tr>
-                        
                     </table>
-                    <button class="btn btn-success px-5 mt-4">Edit</button>
+                    <a href="" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
                 </div>
             </div>
-
         </div>
     </div>
-
 </div>

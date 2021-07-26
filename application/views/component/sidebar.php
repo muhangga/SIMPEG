@@ -4,7 +4,7 @@
 
 <div class="marque">
 <marquee behavior="scroll" scrollamount="5" class="text-white d-flex align-items-center" height="40px"
-	style="background-color: #F7C302;">Sistem Informasi Manajemen Kepegawaian - Balai Pengelola Alih Teknologi Pertanian</marquee>
+	style="background-color: #F7C302;">Sistem Informasi Manajemen Kepegawaian(SIMPEG) - Balai Pengelola Alih Teknologi Pertanian</marquee>
 </div>
 
 <!-- Page Wrapper -->
