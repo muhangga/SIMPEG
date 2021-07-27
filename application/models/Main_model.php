@@ -13,4 +13,20 @@ class Main_model extends CI_Model {
         }
     }
 
+    public function get_user() {
+        $query = $this->db->get('tbl_user');
+        return $query;
+    }
+
+    public function update_jabatan($id_user) {
+        $this->db->where('id_user', $id_user);
+        $query = $this->db->update('tbl_jabatan');
+        return query;
+    }
+
 }
+
+// $this->db->select('*');
+// $this->db->from('blogs');
+// $this->db->join('comments', 'comments.id = blogs.id');
+// $query = $this->db->get();

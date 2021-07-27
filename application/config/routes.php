@@ -55,6 +55,7 @@ $route['register'] = 'Auth/register';
 
 // Beranda Pegaai
 $route['beranda'] = 'Home';
+$route['insert_jabatan'] = 'Home/insert_jabatan';
 
 $route['default_controller'] = 'Auth';
 $route['404_override'] = '';

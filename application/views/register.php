@@ -58,12 +58,12 @@
                                         <label for="nik">Tempat, Tanggal Lahir</label>
                                         
                                         <div class="row">
-                                            <div class="col-7">
-                                                <input type="text" class="form-control border-success" id="ttl" name="ttl">
-                                                <?= form_error('ttl', '<small class="text-danger">', '</small>'); ?>
+                                            <div class="col-lg-7 col-md-7 col-12">
+                                                <input type="text" class="form-control border-success" id="tempat" name="tempat" value="<?= set_value('tempat'); ?>">
+                                                <?= form_error('tempat', '<small class="text-danger">', '</small>'); ?>
                                             </div>
-                                            <div class="col-5">
-                                                <input type="date" class="form-control border-success fas fa-fw fa-date" id="ttl" name="ttl">
+                                            <div class="col-lg-5 col-md-5 col-12">
+                                                <input type="date" class="form-control border-success fas fa-fw fa-date" id="ttl" name="ttl" value="<?= set_value('ttl'); ?>">
                                                 <?= form_error('ttl', '<small class="text-danger">', '</small>'); ?>
                                             </div>
                                         </div>
@@ -71,13 +71,13 @@
                                     
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>
-                                        <textarea class="form-control border-success" name="alamat" id="alamat" name="alamat"></textarea>
+                                        <textarea class="form-control border-success" name="alamat" id="alamat" name="alamat"><?= set_value('alamat'); ?></textarea>
                                         <?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="no_telp">No Telepon</label>
-                                        <input type="number" class="form-control border-success" id="no_telp" name="no_telp">
+                                        <input type="text" class="form-control border-success" id="no_telp" name="no_telp" value="<?= set_value('no_telp'); ?>">
                                         <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                     

@@ -5,7 +5,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <img src="<?= base_url('assets/images/user.png') ?>" width="150px" class="img-thumnail img-responsive" alt="Foto Pegawai">
+                    <img src="<?= base_url('assets/images/user/') . $user['gambar'] ?> ?>" width="150px" class="img-thumnail img-responsive" alt="Foto Pegawai">
                 </div>
                 <div class="col-md-9 col-sm-3 col-xs-12 col-lg-9 mt-3">
                     <table width="100%">
@@ -27,7 +27,7 @@
                             </td>
                         </tr>
                     </table>
-                    <a href="" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
+                    <a href="<?= base_url('home/edit_profile') ?>" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
                 </div>
             </div>
         </div>

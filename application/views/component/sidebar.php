@@ -48,7 +48,7 @@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 	<div class="py-3 px-3 text-white" style="background-color: #4CAA73;">
-		Selamat Datang Muhamad Angga
+		Selamat Datang <?= $user['nama_lengkap']; ?>
 	</div>
 
 	<!-- Main Content -->

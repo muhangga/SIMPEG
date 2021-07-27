@@ -70,14 +70,17 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required', [
             'required'  => 'Nama Lengkap harus di isi!',
         ]);
-        $this->form_validation->set_rules('ttl', 'Tempat, Tanggal Lahir', 'required', [
-            'required'  => 'Tempat, Tanggal Lahir harus di isi!',
+        $this->form_validation->set_rules('tempat', 'Tempat', 'required', [
+            'required'  => 'Tempat harus di isi!',
+        ]);
+        $this->form_validation->set_rules('ttl', 'Tanggal Lahir', 'required', [
+            'required'  => 'Tanggal Lahir harus di isi!',
         ]);
         $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
             'required'  => 'Alamat harus di isi!',
         ]);
         $this->form_validation->set_rules('no_telp', 'No Telepon', 'required|integer|trim', [
-            'integer'   => 'NIK tidak boleh berupa huruf!',
+            'integer'   => 'No Telepon harus berupa Angka!',
             'required'  => 'No Telepon harus di isi!',
         ]);
 
@@ -91,6 +94,7 @@ class Auth extends CI_Controller {
             $password     = $this->input->post('password', true);
             $nama_lengkap = $this->input->post('nama_lengkap', true);
             $nik          = $this->input->post('nik', true);
+            $tempat       = $this->input->post('tempat', true);
             $ttl          = $this->input->post('ttl', true);
             $alamat       = $this->input->post('alamat', true);
             $no_telp      = $this->input->post('no_telp', true);
@@ -100,6 +104,7 @@ class Auth extends CI_Controller {
                 "password"     => password_hash($password, PASSWORD_DEFAULT),
                 "nama_lengkap" => htmlspecialchars($nama_lengkap),
                 "nik"          => htmlspecialchars($nik),
+                "tempat"       => htmlspecialchars($tempat),
                 "ttl"          => htmlspecialchars($ttl),
                 "alamat"       => htmlspecialchars($alamat),
                 "no_telp"      => htmlspecialchars($no_telp),
