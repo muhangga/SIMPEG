@@ -8,7 +8,7 @@
                         <td width="40%" class="tag pb-2">Jenis File</td>
                         <td>
                             <div class="input-group mb-3">
-                                <select class="custom-select border-success" id="inputGroupSelect01">
+                                <select class="custom-select border-success bg-white text-dark mb-3" id="inputGroupSelect01">
                                     <option selected>Jenis File</option>
                                     <option value="KTP">KTP</option>
                                     <option value="Kartu Keluarga">Kartu Keluarga</option>
@@ -23,7 +23,7 @@
                         <td class="tag pb-2">Keterangan</td>
                         <td>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control border-success">
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3">
                             </div>
                         </td>
                     </tr>

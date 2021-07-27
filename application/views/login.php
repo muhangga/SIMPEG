@@ -26,23 +26,25 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                    <h1 class="h4 mb-5 text-success font-weight-bold">Login</h1>
-                                    <form class="user">
+
+                                   <?= $this->session->flashdata('gagal'); ?>
+
+                                    <form action="<?= base_url('auth') ?>" method="POST">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email">
+                                            <input type="email" class="form-control border-success" id="email" name="email" value="<?= set_value('email'); ?>">
+                                            <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="email" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control border-success" id="password" name="password">
+                                            <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                                         </div>
 
-                                        <!-- <button class="btn btn-success btn-block py-2">
+                                        <button type="submit" class="btn btn-success btn-block py-2">
                                             Login
-                                        </button> -->
-                                        
-                                        <a href="<?= base_url('beranda') ?>" class="btn btn-success btn-block py-2">
-                                            Login
-                                        </a>
+                                        </button>
+
                                         <hr>
                                     <div class="text-right">
                                         <span>Belum punya akun? </span>
