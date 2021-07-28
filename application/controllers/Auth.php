@@ -49,7 +49,6 @@ class Auth extends CI_Controller {
                 redirect('auth');
             }
         }
-
 	}
 
     public function register() 
@@ -121,6 +120,13 @@ class Auth extends CI_Controller {
                 redirect('register');
              }
         }
-
     }
+
+    public function logout() {
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah Logout!</div>');
+        redirect('auth');
+     }
 }

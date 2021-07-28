@@ -18,15 +18,15 @@ class Main_model extends CI_Model {
         return $query;
     }
 
-    public function update_jabatan($id_user) {
+    public function update_jabatan($id_user, $data) {
         $this->db->where('id_user', $id_user);
-        $query = $this->db->update('tbl_jabatan');
-        return query;
+        $query = $this->db->update('tbl_jabatan', $data);
+        return $query;
     }
 
+    public function update_profile($id_user, $data) {
+        $this->db->where('id_user', $id_user);
+        $query = $this->db->update('tbl_user', $data);
+        return $query;
+    }
 }
-
-// $this->db->select('*');
-// $this->db->from('blogs');
-// $this->db->join('comments', 'comments.id = blogs.id');
-// $query = $this->db->get();

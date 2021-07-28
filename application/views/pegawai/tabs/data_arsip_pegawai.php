@@ -31,10 +31,9 @@
                     <tr>
                         <td class="tag pb-2">Deksripsi<br><span style="font-size: 10px; color: red; font-style: italic;">(Upload File PDF - Max 5MB)</span></td>
                         <td>
-                            <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file"  id="customFile">
-                                </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input border-success" id="file" name="file">
+                                <label class="custom-file-label" for="file">Pilih file</label>
                             </div>
                         </td>
                     </tr>

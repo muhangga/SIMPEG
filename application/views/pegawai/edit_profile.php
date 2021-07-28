@@ -11,15 +11,20 @@
                 <h4 class="mb-5 alert alert-warning" style="font-size: 17px;">Edit Profile</h4>
                 
                 <div class="row justify-content-center align-items-center text-center">
-                    <div class="col-12">
+                    
+                <form action="<?= base_url('Home/edit_profile/') . $user['id_user'] ?>" method="POST" enctype="multipart/form-data">
 
-                        <img src="<?= base_url('assets/images/user/') . $user['gambar']  ?>" width="150px" alt="Profile User"><br>
-                        <input type="file" name="file" id="" class="mb-5 mt-5">
+                    <div class="col-12">
+                        
+                        <img src="<?= base_url('assets/images/user/') . $user['gambar'] ?> ?>" <?php echo ($user['gambar'] !== 'user.png') ?  "width='180px' height='280px' style='background-size: cover; object-fit: cover; border-radius: 10px;'"  : "class='rounded-circle' width='200px'" ?> class="mt-3" alt="Foto Pegawai">
+
+                        <input type="file" name="gambar" id="gambar" class="mb-5 mt-5">
 
                             <div class="row text-left">
                                 <div class="col-lg-12 col-12">
-                                    <form action="<?= base_url('Auth/register') ?>" method="POST">
 
+                                        <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
+                                    
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" class="form-control border-success" id="email" name="email" value="<?= $user['email'] ?>">
@@ -34,7 +39,7 @@
 
                                         <div class="form-group">
                                             <label for="nik">NIK</label>
-                                            <input type="text" class="form-control border-success" id="nik" name="nik" value="<?= $user['nik'] ?>">
+                                            <input type="text" class="form-control border-success" id="nik" name="nik" value="<?= $user['nik'] ?>" readonly>
                                             <?= form_error('nik', '<small class="text-danger">', '</small>'); ?>
                                         </div>
 
@@ -65,7 +70,7 @@
                                             <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-success btn-block py-2">Daftar</button>
+                                        <button type="submit" class="btn btn-success btn-block py-2">Edit Profile</button>
 
                                         <hr>
                                     </form>
@@ -90,19 +95,20 @@
                             if ($jabatan['id_user'] != null) : ?>
                                 <h4 class="mb-5 alert alert-warning" style="font-size: 17px;">Edit Jabatan</h4>
 
-                                <form action="<?= base_url('home/update_jabatan') ?>" method="POST">
+                                <form action="<?= base_url('home/update_jabatan/') . $user['id_user'] ?>" method="POST">
 
+                                <input type="hidden" name="id_jabatan" value="<?= $jabatan['id_jabatan'] ?>">
                                 <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
 
                                     <div class="form-group">
                                         <label for="jabatan">Jabatan</label>
-                                        <input type="text" class="form-control border-success" id="jabatan" name="jabatan" value="<?= $jabatan['jabatan'] ?>">
+                                        <input type="text" class="form-control border-success" id="jabatan" name="jabatan" value="<?= $jabatan['jabatan'] ?>" required>
                                         <?= form_error('jabatan', '<small class="text-danger">', '</small>'); ?>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tahun">Tahun</label>
-                                        <select class="custom-select border-success bg-white text-dark mb-3" id="tahun" name="tahun" >
+                                        <select class="custom-select border-success bg-white text-dark mb-3" id="tahun" name="tahun" required>
                                             <option selected disabled><?= $jabatan['tahun'] ?></option>
 
                                             <?php 
@@ -115,7 +121,7 @@
                                         <?= form_error('tahun', '<small class="text-danger">', '</small>'); ?>
                                     </div>
 
-                                    <button type="submit" class="btn btn-success btn-block py-2">Tambah Jabatan</button>
+                                    <button type="submit" class="btn btn-success btn-block py-2">Edit Jabatan</button>
                                 </form>
 
                             <?php else : ?>
@@ -128,14 +134,14 @@
 
                                     <div class="form-group">
                                         <label for="jabatan">Jabatan</label>
-                                        <input type="text" class="form-control border-success" id="jabatan" name="jabatan" value="<?= set_value('jabatan'); ?>">
+                                        <input type="text" class="form-control border-success" id="jabatan" name="jabatan" value="<?= set_value('jabatan'); ?>" required>
                                         <?= form_error('jabatan', '<small class="text-danger">', '</small>'); ?>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tahun">Tahun</label>
-                                        <select class="custom-select border-success bg-white text-dark mb-3" id="tahun" name="tahun">
-                                            <option selected disabled>Pilih Tahun</option>
+                                        <select class="custom-select border-success bg-white text-dark mb-3" id="tahun" name="tahun" required>
+                                            <option selected disabled required>Pilih Tahun</option>
 
                                             <?php 
                                                 for ($i = date('Y'); $i >= date('Y') - 20; $i-=1) : ?>

@@ -54,7 +54,7 @@
 	<!-- Main Content -->
 	<div id="content" class="bg-white">
 
-		<a href="<?= base_url('login') ?>"><span class="btn btn-danger float-right mr-3 mt-3"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Keluar</span></a>
+		<a href="<?= base_url('auth/logout') ?>"><span class="btn btn-danger float-right mr-3 mt-3"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Keluar</span></a>
 
 		<!-- Topbar -->
 		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">
