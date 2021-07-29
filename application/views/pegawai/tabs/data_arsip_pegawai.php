@@ -2,7 +2,7 @@
     <div class="card shadow mt-3 border-0">
         <div class="card-body">
 
-            <form action="<?= base_url('Home') ?>" method="POST" >
+            <form action="<?= base_url('Home') ?>" method="POST" enctype="multipart/form-data">
                 <table>
                     
                     <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
@@ -27,7 +27,7 @@
                         <td class="tag pb-2">Keterangan</td>
                         <td>
                             <div class="input-group">
-                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan"value="<?= $data_arsip['keterangan'] ?>">
+                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan" value="<?= $data_arsip['keterangan'] ?>">
                             </div>
                             <?= form_error('keterangan', '<small class="text-danger">', '</small>'); ?>
                         </td>
@@ -64,7 +64,7 @@
                         <th>File</th>
                         </tr>
                     <tr>
-                        <td>1</td>
+                        <td><?php $no = 1; echo $no++; ?></td>
                         <td>21 Juli 2021</td>
                         <td>KTP</td>
                         <td>KTP Muhamad Angga</td>
