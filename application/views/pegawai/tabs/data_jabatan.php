@@ -27,7 +27,7 @@
                             </td>
                         </tr>
                     </table>
-                    <a href="<?= base_url('home/edit_profile/') . $user['id_user'] ?>" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
+                    <a href="<?= base_url('home/edit_jabatan/') . $user['id_user'] ?>" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
                 </div>
             </div>
         </div>

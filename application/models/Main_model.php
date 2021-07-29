@@ -18,8 +18,8 @@ class Main_model extends CI_Model {
         return $query;
     }
 
-    public function update_jabatan($id_user, $data) {
-        $this->db->where('id_user', $id_user);
+    public function update_jabatan($id_jabatan, $data) {
+        $this->db->where('id_jabatan', $id_jabatan);
         $query = $this->db->update('tbl_jabatan', $data);
         return $query;
     }

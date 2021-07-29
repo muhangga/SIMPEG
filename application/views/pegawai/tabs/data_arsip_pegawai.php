@@ -2,18 +2,22 @@
     <div class="card shadow mt-3 border-0">
         <div class="card-body">
 
-            <form action="#" method="POST">
+            <form action="<?= base_url('Home') ?>" method="POST" >
                 <table>
+                    
+                    <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
+
                     <tr>
                         <td width="40%" class="tag pb-2">Jenis File</td>
                         <td>
                             <div class="input-group mb-3">
-                                <select class="custom-select border-success bg-white text-dark mb-3" id="inputGroupSelect01">
+                                <select class="custom-select border-success bg-white text-dark mb-3" id="jenis_file" name="jenis_file">
                                     <option selected>Jenis File</option>
                                     <option value="KTP">KTP</option>
                                     <option value="Kartu Keluarga">Kartu Keluarga</option>
                                     <option value="Dokumen Kontrak">Dokumen Kontrak</option>
                                     <option value="Ijazah">Ijazah</option>
+                                    <?= form_error('jenis_file', '<small class="text-danger">', '</small>'); ?>
                                 </select>
                             </div>
                         </td>
@@ -22,18 +26,20 @@
                     <tr>
                         <td class="tag pb-2">Keterangan</td>
                         <td>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan"value="<?= $data_arsip['keterangan'] ?>">
                             </div>
+                            <?= form_error('keterangan', '<small class="text-danger">', '</small>'); ?>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="tag pb-2">Deksripsi<br><span style="font-size: 10px; color: red; font-style: italic;">(Upload File PDF - Max 5MB)</span></td>
                         <td>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input border-success" id="file" name="file">
-                                <label class="custom-file-label" for="file">Pilih file</label>
+                            <div class="custom-file mt-4">
+                                <input type="file" class="custom-file-input border-success" id="deksripsi" name="deksripsi">
+                                <label class="custom-file-label" for="deksripsi">Pilih file</label>
+                                <?= form_error('deksripsi', '<small class="text-danger">', '</small>'); ?>
                             </div>
                         </td>
                     </tr>
