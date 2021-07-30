@@ -1,4 +1,6 @@
 <div class="tab-pane fade" id="data-jabatan" role="tabpanel" aria-labelledby="data-jabatan-tab">
+
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message');?>"></div>
     
     <div class="card shadow mt-3 border-0">
         <div class="card-body">
@@ -27,7 +29,7 @@
                             </td>
                         </tr>
                     </table>
-                    <a href="<?= base_url('home/edit_jabatan/') . $user['id_user'] ?>" class="btn btn-success px-4 mt-4 float-right">Edit Profile</a>
+                    <a href="<?= base_url('home/edit_jabatan/') . $user['id_user'] ?>" class="btn btn-success px-4 mt-4 float-right">Edit Jabatan</a>
                 </div>
             </div>
         </div>

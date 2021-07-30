@@ -1,4 +1,6 @@
 <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message');?>"></div>
     
     <div class="card shadow mt-3 border-0">
         <div class="card-body">

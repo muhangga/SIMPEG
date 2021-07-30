@@ -13,20 +13,29 @@ class Main_model extends CI_Model {
         }
     }
 
-    public function get_user() {
+    public function get_user() 
+    {
         $query = $this->db->get('tbl_user');
         return $query;
     }
 
-    public function update_jabatan($id_jabatan, $data) {
+    public function update_jabatan($id_jabatan, $data) 
+    {
         $this->db->where('id_jabatan', $id_jabatan);
         $query = $this->db->update('tbl_jabatan', $data);
         return $query;
     }
 
-    public function update_profile($id_user, $data) {
+    public function update_profile($id_user, $data) 
+    {
         $this->db->where('id_user', $id_user);
         $query = $this->db->update('tbl_user', $data);
         return $query;
+    }
+
+    public function hapus_file($id_arsip) 
+    {
+        $this->db->where('id_arsip', $id_arsip);
+        $this->db->delete('tbl_arsip_pegawai');
     }
 }

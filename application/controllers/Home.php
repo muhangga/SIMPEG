@@ -26,7 +26,7 @@ class Home extends CI_Controller {
             "title" => "SIMPEG BPATP - Beranda",
             "user"  =>$this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
             "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
-            "data_arsip"  => $this->db->get_where("tbl_arsip_pegawai", ['id_user' => $this->session->userdata('id_user')])->row_array(),
+            "data_arsip"  => $this->db->get_where("tbl_arsip_pegawai", ['id_user' => $this->session->userdata('id_user')])->result_array(),
         ];
 
         if ($this->form_validation->run() == FALSE ) {
@@ -60,7 +60,7 @@ class Home extends CI_Controller {
                     $success = $this->db->insert('tbl_arsip_pegawai', $kirim_data);
 
                     if ($success) {
-                        $this->session->set_flashdata('success', 'Data berhasil ditambahkan!');
+                        $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
                         redirect('beranda');
                     } else {
                         $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
@@ -79,14 +79,22 @@ class Home extends CI_Controller {
                     $success = $this->db->insert('tbl_arsip_pegawai', $kirim_data);
 
                     if ($success) {
-                        $this->session->set_flashdata('success', 'Data berhasil ditambahkan!');
-                    redirect('beranda');
+                        $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+                        redirect('beranda');
                     } else {
                         $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
                     }
                 }
         }
 	}
+
+    public function hapus_file($id_arsip)
+    {
+        $success = $this->Main_model->hapus_file($id_arsip);
+
+        $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+        redirect('beranda');
+    }
 
     // EDIT PROFILE
     public function edit_profile($id_user) 
@@ -151,7 +159,7 @@ class Home extends CI_Controller {
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('gambar', $new_image);
                 } else {
-                    echo $this->upload->display_errors();
+                    $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
                 }
             }
             
@@ -166,8 +174,12 @@ class Home extends CI_Controller {
             ];
             $success = $this->Main_model->update_profile($id_user, $data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data berhasil di update!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('beranda');
+            if ($success) {
+                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+                redirect('beranda');
+            } else {
+                $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+            }
         }
     }
 
@@ -207,7 +219,7 @@ class Home extends CI_Controller {
             $success = $this->db->insert('tbl_jabatan', $data);
 
             if ($success) {
-                $this->session->set_flashdata('success', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
                 redirect('beranda');
             } else {
                 $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
@@ -246,7 +258,7 @@ class Home extends CI_Controller {
             $success = $this->db->update('tbl_jabatan', $data);
 
             if ($success) {
-                $this->session->set_flashdata('success', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
                 redirect('beranda');
              } else {
                 $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');

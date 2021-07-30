@@ -41,11 +41,11 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata($data);
                     redirect('home');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+                    $this->session->set_flashdata('message', 'Password Salah');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar!</div>');
+                $this->session->set_flashdata('message', 'Email belum terdaftar!');
                 redirect('auth');
             }
         }
@@ -113,10 +113,10 @@ class Auth extends CI_Controller {
 
             $success = $this->Main_model->insert_pegawai($data);
             if ($success) {
-                $this->session->set_flashdata('success', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('message', 'Data berhasil ditambahkan!');
                 redirect('auth');
              } else {
-                $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+                $this->session->set_flashdata('message', 'Data gagal ditambahkan!');
                 redirect('register');
              }
         }
@@ -126,7 +126,7 @@ class Auth extends CI_Controller {
         $this->session->unset_userdata('id_user');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah Logout!</div>');
+        $this->session->set_flashdata('message', 'Anda telah Logout!');
         redirect('auth');
      }
 }
