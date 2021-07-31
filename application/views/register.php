@@ -3,6 +3,12 @@
 
 <div class="container">
 
+    <?php if($this->session->flashdata('sukses')) : ?>
+        <div class="flash-data-success" data-sukses="<?= $this->session->flashdata('sukses');?>"></div>
+    <?php elseif($this->session->flashdata('gagal')) : ?>
+        <div class="flash-data-failed" data-gagal="<?= $this->session->flashdata('gagal');?>"></div>
+    <?php endif ?>
+
     <div class="row justify-content-center">
 
         <div class="col-xl-10 col-lg-12 col-md-9">

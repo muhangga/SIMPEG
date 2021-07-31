@@ -20,7 +20,6 @@
             $('#example').DataTable();
         } );
 
-
         const flashData = $('.flash-data').data('flashdata');
         if(flashData){
             Swal.fire({
@@ -35,7 +34,7 @@
         if(suksesData){
             Swal.fire({
                 title : 'Pemberitahuan',
-                text : SUKSES,
+                text : suksesData,
                 icon : 'success'
             });
         }
@@ -45,12 +44,50 @@
         if(gagalData){
             Swal.fire({
                 title : 'Pemberitahuan',
-                text : GAGAL,
+                text : gagalData,
                 icon : 'error'
             });
         }
+        
+        $('.tombol-hapus').on('click', function(e) {
+            
+            e.preventDefault();
+            const href = $(this).attr('href');
 
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text:  'Data file akan dihapus',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor : '#3085d6',
+                cancelButtonColor : '#d33',
+                confirmButtonText: 'Hapus Data!',
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = href;
+                }
+            })
 
+        });
+
+        $('.logout').on('click', function(e){
+            e.preventDefault();
+            
+            Swal.fire({
+                title: 'Apakah anda yakin ingin keluar ?',
+                text: 'Keluar Dari Beranda',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Keluar',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = 'login';
+                }
+            });
+        });
     </script>
     
 </body>

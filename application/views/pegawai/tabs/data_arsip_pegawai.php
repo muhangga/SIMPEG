@@ -55,7 +55,7 @@
 
     <h4 class="mt-5 mb-3">Daftar File</h4>
 
-    <div class="card shadow">
+    <div class="card shadow mb-5">
         <div class="card-body">
             <div class="table-responsive">
                   <table id="example" class="table table-striped table-bordered table-md">
@@ -70,7 +70,7 @@
                     </thead>
                         
                     
-                    <tbody style="font-size: 14px;">
+                    <tbody style="font-size: 14px;" class="text-dark">
                         <?php 
                         $no = 1;
                         foreach($data_arsip as $data) : ?>

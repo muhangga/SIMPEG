@@ -3,11 +3,12 @@
 
     <div class="container">
 
+        
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
+            
             <div class="col-xl-10 col-lg-12 col-md-9">
-
+                
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -27,7 +28,11 @@
                                 <div class="p-5">
                                    <h1 class="h4 mb-5 text-success font-weight-bold">Login</h1>
 
-                                   <?= $this->session->flashdata('gagal'); ?>
+                                   <?php if($this->session->flashdata('sukses')) : ?>
+                                        <div class="flash-data-success" data-sukses="<?= $this->session->flashdata('sukses');?>"></div>
+                                    <?php elseif($this->session->flashdata('gagal')) : ?>
+                                        <div class="flash-data-failed" data-gagal="<?= $this->session->flashdata('gagal');?>"></div>
+                                    <?php endif ?>
 
                                     <form action="<?= base_url('auth') ?>" method="POST">
                                         <div class="form-group">

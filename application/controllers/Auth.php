@@ -41,11 +41,11 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata($data);
                     redirect('home');
                 } else {
-                    $this->session->set_flashdata('message', 'Password Salah');
+                    $this->session->set_flashdata('gagal', 'Password Salah');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', 'Email belum terdaftar!');
+                $this->session->set_flashdata('gagal', 'Email belum terdaftar!');
                 redirect('auth');
             }
         }
@@ -57,14 +57,14 @@ class Auth extends CI_Controller {
             'required'  => 'Email harus di isi!',
             'is_unique' => 'Email ini sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|integer|is_unique[tbl_user.NIK]' , [
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|integer|is_unique[tbl_user.nik]' , [
             'required'  => 'NIK harus di isi!',
             'integer'   => 'NIK tidak boleh berupa huruf!',
             'is_unique' => 'Nomer NIK sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[5]', [
             'required'  => 'Password harus di isi!',
-            'min_length' => 'Password terlalu pendek!'
+            'min_length' => 'Password minimal harus 5 huruf!'
         ]);
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required', [
             'required'  => 'Nama Lengkap harus di isi!',
@@ -78,8 +78,8 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
             'required'  => 'Alamat harus di isi!',
         ]);
-        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required|integer|trim', [
-            'integer'   => 'No Telepon harus berupa Angka!',
+        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required|is_natural|trim|min_length[10]', [
+            'is_natural'   => 'No Telepon harus berupa Angka!',
             'required'  => 'No Telepon harus di isi!',
         ]);
 
@@ -113,10 +113,10 @@ class Auth extends CI_Controller {
 
             $success = $this->Main_model->insert_pegawai($data);
             if ($success) {
-                $this->session->set_flashdata('message', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('sukses', 'User berhasil ditambahkan!');
                 redirect('auth');
              } else {
-                $this->session->set_flashdata('message', 'Data gagal ditambahkan!');
+                $this->session->set_flashdata('gagal', 'User gagal ditambahkan!');
                 redirect('register');
              }
         }

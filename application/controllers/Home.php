@@ -65,26 +65,29 @@ class Home extends CI_Controller {
                     } else {
                         $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
                     }
-                }
                 } else {
-                    $id_user = $this->input->post('id_user');
-                    $jenis_file = $this->input->post('jenis_file');
-                    $keterangan = $this->input->post('keterangan');
-
-                    $kirim_data['id_user'] = $id_user;
-                    $kirim_data['jenis_file'] = $jenis_file;
-                    $kirim_data['tgl_upload'] = date("Y-m-d H:i:s");
-                    $kirim_data['keterangan'] = $keterangan;
-
-                    $success = $this->db->insert('tbl_arsip_pegawai', $kirim_data);
-
-                    if ($success) {
-                        $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
-                        redirect('beranda');
-                    } else {
-                        $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
-                    }
+                    $this->session->set_flashdata('gagal', 'File harus berupa PDF!');
+                    redirect('beranda');
                 }
+            } else {
+                $id_user = $this->input->post('id_user');
+                $jenis_file = $this->input->post('jenis_file');
+                $keterangan = $this->input->post('keterangan');
+
+                $kirim_data['id_user'] = $id_user;
+                $kirim_data['jenis_file'] = $jenis_file;
+                $kirim_data['tgl_upload'] = date("Y-m-d H:i:s");
+                $kirim_data['keterangan'] = $keterangan;
+
+                $success = $this->db->insert('tbl_arsip_pegawai', $kirim_data);
+
+                if ($success) {
+                    $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+                    redirect('beranda');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+                }
+            }
         }
 	}
 
@@ -92,7 +95,7 @@ class Home extends CI_Controller {
     {
         $success = $this->Main_model->hapus_file($id_arsip);
 
-        $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+        $this->session->set_flashdata('sukses', 'File berhasil dihapus!');
         redirect('beranda');
     }
 
@@ -111,8 +114,8 @@ class Home extends CI_Controller {
         $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
             'required'  => 'Alamat harus di isi!',
         ]);
-        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required|integer|trim', [
-            'integer'   => 'No Telepon harus berupa Angka!',
+        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required|is_natural|trim|min_length[10]', [
+            'is_natural'   => 'No Telepon harus berupa Angka!',
             'required'  => 'No Telepon harus di isi!',
         ]);
         
@@ -129,7 +132,7 @@ class Home extends CI_Controller {
             $this->load->view('pegawai/edit_profile', $data);
             $this->load->view('component/footer');
 
-            $this->session->set_flashdata('gagal', 'Gagal menambahkan Data!');
+            $this->session->set_flashdata('gagal', 'Gagal mengubah profile!');
         } else {
             
             $id_user      = $this->input->post('id_user');
@@ -144,7 +147,7 @@ class Home extends CI_Controller {
             $upload_image = $_FILES['gambar']['name'];
 
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '4096';
                 $config['upload_path'] = './assets/images/user/';
 
@@ -157,28 +160,47 @@ class Home extends CI_Controller {
                         unlink(FCPATH . './assets/images/user/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
-                    $this->db->set('gambar', $new_image);
-                } else {
-                    $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
-                }
-            }
-            
-            $data = [
-                "email"        => $email,
-                "nama_lengkap" => $nama_lengkap,
-                "nik"          => $nik,
-                "tempat"       => $tempat,
-                "ttl"          => $ttl,
-                "alamat"       => $alamat,
-                "no_telp"      => $no_telp
-            ];
-            $success = $this->Main_model->update_profile($id_user, $data);
 
-            if ($success) {
-                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
-                redirect('beranda');
+                    $kirim_data['email'] = $email;
+                    $kirim_data['nama_lengkap'] = $nama_lengkap;
+                    $kirim_data['nik'] = $nik;
+                    $kirim_data['tempat'] = $tempat;
+                    $kirim_data['ttl'] = $ttl;
+                    $kirim_data['alamat'] = $alamat;
+                    $kirim_data['no_telp'] = $no_telp;
+                    $kirim_data['gambar'] = $new_image;
+
+                    $success = $this->Main_model->update_profile($id_user, $kirim_data);
+
+                    if ($success) {
+                        $this->session->set_flashdata('sukses', 'Profile berhasil di Update!');
+                        redirect('beranda');
+                    } else {
+                        $this->session->set_flashdata('gagal', 'Profile gagal di Update!');
+                        redirect('beranda');
+                    }
+                } else {
+                    $this->session->set_flashdata('gagal', 'Foto harus berfomat jpg/png!');
+                    redirect('beranda');
+                }
             } else {
-                $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+                $kirim_data['email'] = $email;
+                $kirim_data['nama_lengkap'] = $nama_lengkap;
+                $kirim_data['nik'] = $nik;
+                $kirim_data['tempat'] = $tempat;
+                $kirim_data['ttl'] = $ttl;
+                $kirim_data['alamat'] = $alamat;
+                $kirim_data['no_telp'] = $no_telp;
+
+                $success = $this->Main_model->update_profile($id_user, $kirim_data);
+
+                if ($success) {
+                    $this->session->set_flashdata('sukses', 'Profile berhasil di Update!');
+                    redirect('beranda');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Profile gagal di Update!');
+                    redirect('beranda');
+                }
             }
         }
     }
@@ -205,7 +227,7 @@ class Home extends CI_Controller {
             $this->load->view('pegawai/edit_jabatan', $data);
             $this->load->view('component/footer');
 
-            $this->session->set_flashdata('gagal', 'Gagal menambahkan Data!');
+            $this->session->set_flashdata('gagal', 'Gagal mengedit Data!');
         } else {
             $id_user = $this->input->post('id_user');
             $jabatan = $this->input->post('jabatan', true);
@@ -219,10 +241,10 @@ class Home extends CI_Controller {
             $success = $this->db->insert('tbl_jabatan', $data);
 
             if ($success) {
-                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('sukses', 'Berhasil menambahkan Jabatan!');
                 redirect('beranda');
             } else {
-                $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+                $this->session->set_flashdata('gagal', 'Gagal menambahkan Jabatan!');
             }
           }
         }
@@ -242,7 +264,7 @@ class Home extends CI_Controller {
         ];
 
         if ($this->form_validation->run() == FALSE) {
-            $this->session->set_flashdata('gagal', 'Gagal menambahkan Data!');
+            $this->session->set_flashdata('gagal', 'Gagal mengupdate Jabatan!');
             redirect('beranda');
         } else {
             $id_user = $this->input->post('id_user');
@@ -258,10 +280,10 @@ class Home extends CI_Controller {
             $success = $this->db->update('tbl_jabatan', $data);
 
             if ($success) {
-                $this->session->set_flashdata('sukses', 'Data berhasil ditambahkan!');
+                $this->session->set_flashdata('sukses', 'Jabatan berhasil di Update!');
                 redirect('beranda');
              } else {
-                $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
+                $this->session->set_flashdata('gagal', 'Jabatan gagal di Update!');
              }
         }
     }
