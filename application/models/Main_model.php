@@ -38,4 +38,16 @@ class Main_model extends CI_Model {
         $this->db->where('id_arsip', $id_arsip);
         $this->db->delete('tbl_arsip_pegawai');
     }
+
+    public function all_user()
+    {
+        $query = $this->db->query('SELECT * FROM tbl_user');
+        return $query;
+    }
+
+    public function delete_user($id_user) 
+    {
+        $this->db->where('id_user', $id_user);
+        $this->db->delete('tbl_user');
+    }
 }

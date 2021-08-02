@@ -125,7 +125,7 @@ class Home extends CI_Controller {
 
         $data = [
             "title" => "SIMPEG BPATP - Edit Profile",
-            "user"  => $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
+            "user"  => $this->db->get_where("tbl_user", ['id_user' => $id_user])->row_array(),
             "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
             "get_user" => $this->Main_model->get_user($id_user)->result()
         ];
@@ -298,15 +298,24 @@ class Home extends CI_Controller {
         }
     }
 
-    public function logout() {
+    // ADMIN AREA
+    public function data_user() 
+    {
         $data = [
-            'id_user' => '',
-            'admin' => '',
-            'masuk' => FALSE
+            "user"  => $this->db->get_where("tbl_user", ['id_user' => $this->session->userdata('id_user')])->row_array(),
+            "get_user" => $this->Main_model->get_user()->result_array()
         ];
-        $this->session->unset_userdata($data);
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('sukses', 'Anda telah Logout!');
-        redirect('auth');
-     }
+
+        $this->load->view('component/sidebar', $data);
+        $this->load->view('component/header', $data);
+        $this->load->view('admin/data_arsip_pegawai', $data);
+        $this->load->view('component/footer');
+    }
+
+    public function delete_user($id_user) 
+    {
+        $this->Main_model->delete_user($id_user);
+        $this->session->set_flashdata('sukses', 'Data Pegawai berhasil dihapus!');
+        redirect('beranda');
+    }
 }

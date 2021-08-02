@@ -123,4 +123,16 @@ class Auth extends CI_Controller {
              }
         }
     }
+
+    public function logout() {
+        $data = [
+            'id_user' => '',
+            'admin' => '',
+            'masuk' => FALSE
+        ];
+        $this->session->unset_userdata($data);
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('sukses', 'Anda telah Logout!');
+        redirect('auth');
+     }
 }

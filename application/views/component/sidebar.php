@@ -24,15 +24,39 @@
 	<li class="nav-item mt-5">
 		<a class="nav-link" href="<?= base_url('beranda') ?>">
 		<i class="fas fa-fw fa-home text-success"></i>
-		<span>Beranda</span></a>
+		<span class="text-dark">Beranda</span></a>
 	</li>
+
+	<!-- Nav Item - Pages Collapse Menu -->
+	<?php if ($user['role'] == 'admin') : ?>
+
+	<li class="nav-item">
+		<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+			aria-controls="collapsePages">
+			<i class="fas fa-fw fa-folder text-success"></i>
+			<span class="text-dark">Data Master</span>
+		</a>
+		<div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+			data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<a class="collapse-item" href="<?= base_url('data_user') ?>"><i class="fas fa-fw fa-users text-success mr-2"></i>
+					<span class="text-dark">Data Pegawai</span>
+				</a>
+				<a class="collapse-item" href="login.html"><i class="fas fa-fw fa-folder-open text-success mr-2"></i>
+					<span class="text-dark">Data Arsip Pegawai</span>
+				</a>
+			</div>
+		</div>
+	</li>
+
+	<?php endif; ?>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 
 	<!-- Sidebar Toggler (Sidebar) -->
 	<div class="text-center text-white d-none d-md-inline">
-		<button class="rounded-circle border-0 bg-success" id="sidebarToggle"></button>
+		<button class="rounded-circle border-0 bg-success text-white" id="sidebarToggle"></button>
 	</div>
 
 </ul>
@@ -48,17 +72,17 @@
 	<!-- Main Content -->
 	<div id="content" class="bg-white">
 
-	<form action="<?= base_url('Home/logout') ?>" method="POST">
+	<form action="<?= base_url('Auth/logout') ?>" method="POST">
 		<button type="submit" class="btn btn-danger float-right mr-3 mt-3 logout"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Keluar</button>
 	</form>
 
-		<!-- Topbar -->
-		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">
+	<!-- Topbar -->
+	<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">
 
-			<!-- Sidebar Toggle (Topbar) -->
-			<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-				<i class="fa fa-bars text-success"></i>
-			</button>
-		</nav>
-		
-		<!-- End of Topbar -->
+		<!-- Sidebar Toggle (Topbar) -->
+		<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+			<i class="fa fa-bars text-success"></i>
+		</button>
+	</nav>
+	
+	<!-- End of Topbar -->

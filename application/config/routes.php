@@ -57,6 +57,9 @@ $route['register'] = 'Auth/register';
 $route['beranda'] = 'Home';
 $route['insert_jabatan'] = 'Home/insert_jabatan';
 
+// ADMIN AREA
+$route['data_user'] = 'Home/data_user';
+
 $route['default_controller'] = 'Auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

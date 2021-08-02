@@ -1,12 +1,14 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+    <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/index.js') ?>"></script>
     <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/dataTables.bootstrap4.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/demo/datatables-demo.js') ?>"></script>
 
     <script src="<?= base_url('assets/sweetalert/sweetalert2.all.min.js') ?>"></script>
 
@@ -56,7 +58,7 @@
 
             Swal.fire({
                 title: 'Apakah Anda Yakin?',
-                text:  'Data file akan dihapus',
+                text:  'Data akan dihapus',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor : '#3085d6',
@@ -88,6 +90,12 @@
                 }
             });
         });
+
+        $('.sidebar .nav-item .nav-link span').on('click', function() {
+            $('.sidebar .nav-item .nav-link span').removeClass('text-dark');
+            $(this).addClass('text-success');
+        });
+        
     </script>
     
 </body>

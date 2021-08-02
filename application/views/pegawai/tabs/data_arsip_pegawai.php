@@ -58,8 +58,8 @@
     <div class="card shadow mb-5">
         <div class="card-body">
             <div class="table-responsive">
-                  <table id="example" class="table table-striped table-bordered table-md">
-                    <thead>
+                  <table id="example" class="table table-bordered table-md">
+                    <thead class="bg-success text-white" style="font-size: 15px;">
                         <tr>
                             <th>No</th>
                             <th>Tanggal Upload</th>
@@ -69,7 +69,6 @@
                         </tr>
                     </thead>
                         
-                    
                     <tbody style="font-size: 14px;" class="text-dark">
                         <?php 
                         $no = 1;
@@ -87,7 +86,6 @@
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
-
                   </table>
             </div>
         </div>
