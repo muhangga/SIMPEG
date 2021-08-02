@@ -7,6 +7,7 @@ class Auth extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->library('session');
         $this->load->model('Main_model');
     }
 
@@ -20,7 +21,7 @@ class Auth extends CI_Controller {
         ]);
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = "Halaman Login";
+            $data['title'] = "SIMPEG BPATP - Login";
     
             $this->load->view('component/header', $data);
             $this->load->view('login');
@@ -36,7 +37,8 @@ class Auth extends CI_Controller {
                     $data = [
                         'id_user' => $user['id_user'],
                         'email'   => $user['email'],
-                        'role'    => $user['role']
+                        'role'    => $user['role'],
+                        'masuk'   => TRUE,
                     ];
                     $this->session->set_userdata($data);
                     redirect('home');
@@ -84,7 +86,7 @@ class Auth extends CI_Controller {
         ]);
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = "Halaman Daftar Akun";
+            $data['title'] = "SIMPEG BPATP - Daftar Akun";
             $this->load->view('component/header', $data);
             $this->load->view('register');
             $this->load->view('component/footer');
@@ -121,12 +123,4 @@ class Auth extends CI_Controller {
              }
         }
     }
-
-    public function logout() {
-        $this->session->unset_userdata('id_user');
-        $this->session->unset_userdata('email');
-        $this->session->unset_userdata('role');
-        $this->session->set_flashdata('message', 'Anda telah Logout!');
-        redirect('auth');
-     }
 }

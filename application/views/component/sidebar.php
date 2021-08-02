@@ -48,8 +48,9 @@
 	<!-- Main Content -->
 	<div id="content" class="bg-white">
 
-		<a href="<?= base_url('auth/logout') ?>"><span class="btn btn-danger float-right mr-3 mt-3 logout"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Keluar</span></a>
-
+	<form action="<?= base_url('Home/logout') ?>" method="POST">
+		<button type="submit" class="btn btn-danger float-right mr-3 mt-3 logout"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Keluar</button>
+	</form>
 
 		<!-- Topbar -->
 		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">

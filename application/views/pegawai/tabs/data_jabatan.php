@@ -16,7 +16,7 @@
                                1. Jabatan
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?php echo (!$jabatan['jabatan']) ?  "-" :  $jabatan['jabatan'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?php echo (!$jabatan['jabatan1']) ?  "-" :  $jabatan['jabatan1'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -25,7 +25,7 @@
                                &nbsp&nbsp&nbsp Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun']) ?  "-" :  $jabatan['tahun'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun1']) ?  "-" :  $jabatan['tahun1'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -39,7 +39,7 @@
                                 2. Jabatan
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2 mt-2" value="<?php echo (!$jabatan['jabatan']) ?  "-" :  $jabatan['jabatan'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2 mt-2" value="<?php echo (!$jabatan['jabatan2']) ?  "-" :  $jabatan['jabatan2'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -48,7 +48,7 @@
                                 &nbsp&nbsp&nbsp  Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun']) ?  "-" :  $jabatan['tahun'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun2']) ?  "-" :  $jabatan['tahun2'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -62,7 +62,7 @@
                                 3. Jabatan
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2 mt-3" value="<?php echo (!$jabatan['jabatan']) ?  "-" :  $jabatan['jabatan'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2 mt-3" value="<?php echo (!$jabatan['jabatan3']) ?  "-" :  $jabatan['jabatan3'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -71,7 +71,7 @@
                                 &nbsp&nbsp&nbsp  Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun']) ?  "-" :  $jabatan['tahun'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun3']) ?  "-" :  $jabatan['tahun3'] ?>" readonly>
                             </td>
                         </tr>
                         

@@ -12,47 +12,47 @@
                 <div class="col-12 col-md-8 col-lg-8 mt-4">
                     <table width="100%">
                         <tr>
-                            <td width="30%" class="tag pb-3">
+                            <td width="30%" class="tag pb-4">
                                 Nama
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?= $user['nama_lengkap'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['nama_lengkap'] ?>" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="tag pb-3">
+                            <td class="tag pb-4">
                                 NIK
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?= $user['nik'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['nik'] ?>" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="tag mt-3">
+                            <td class="tag pb-4">
                                 Tempat/Tanggal Lahir
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?=$user['tempat'] . ", " . $user['ttl'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?=$user['tempat'] . ", " . $user['ttl'] ?>" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="tag pb-3">
+                            <td class="tag pb-4">
                                 Alamat Rumah
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?= $user['alamat'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['alamat'] ?>" readonly>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="tag pb-3">
+                            <td class="tag pb-4">
                                 No Telepon
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-3" value="<?= $user['no_telp'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['no_telp'] ?>" readonly>
                             </td>
                         </tr>
                     </table>

@@ -9,7 +9,10 @@ class Home extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('Main_model');
 
-        $data['user'] =  $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array();
+        if ($this->session->userdata('masuk') != TRUE) {
+            $this->session->set_flashdata('gagal', 'Anda tidak boleh masuk, Silahkan login terlebih dahulu!');
+            redirect('login');
+        }
     }
 
 	public function index()
@@ -131,8 +134,6 @@ class Home extends CI_Controller {
             $this->load->view('component/header', $data);
             $this->load->view('pegawai/edit_profile', $data);
             $this->load->view('component/footer');
-
-            $this->session->set_flashdata('gagal', 'Gagal mengubah profile!');
         } else {
             
             $id_user      = $this->input->post('id_user');
@@ -208,83 +209,104 @@ class Home extends CI_Controller {
     // JABATAN
     public function edit_jabatan($id_user) 
     {
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required', [
-            'required'  => 'Jabatan harus di isi!',
-        ]);
-        $this->form_validation->set_rules('tahun', 'Tahun', 'required', [
-            'required'  => 'Tahun harus di isi!',
-        ]);
+        $this->form_validation->set_rules('jabatan1', 'Jabatan1', 'required');
+        $this->form_validation->set_rules('tahun1', 'Tahun1', 'required');
         
-        $data = [
-            "title" => "SIMPEG BPATP - Edit Jabatan",
-            "user"  => $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
-            "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
-            "get_user" => $this->Main_model->get_user($id_user)->result()
-        ];
         if ($this->form_validation->run() == FALSE) {
+            $data = [
+                "title" => "SIMPEG BPATP - Edit Jabatan",
+                "user"  => $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
+                "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
+                "get_user" => $this->Main_model->get_user($id_user)->result()
+            ];
             $this->load->view('component/sidebar', $data);
             $this->load->view('component/header', $data);
             $this->load->view('pegawai/edit_jabatan', $data);
             $this->load->view('component/footer');
-
-            $this->session->set_flashdata('gagal', 'Gagal mengedit Data!');
         } else {
             $id_user = $this->input->post('id_user');
-            $jabatan = $this->input->post('jabatan', true);
-            $tahun = $this->input->post('tahun', true);
+            $jabatan1 = $this->input->post('jabatan1', true);
+            $jabatan2 = $this->input->post('jabatan2', true);
+            $jabatan3 = $this->input->post('jabatan3', true);
+            $tahun1 = $this->input->post('tahun1', true);
+            $tahun2 = $this->input->post('tahun2', true);
+            $tahun3 = $this->input->post('tahun3', true);
 
-            $data = [
-                "id_user" => $id_user,
-                "jabatan" => $jabatan,
-                "tahun"   => $tahun
+            $kirim_data = [
+                "id_user"  => $id_user,
+                "jabatan1" => $jabatan1,
+                "jabatan2" => (!$jabatan2) ?  "-" :  $jabatan2,
+                "jabatan3" => (!$jabatan3) ?  "-" :  $jabatan3,
+                "tahun1"   => $tahun1,
+                "tahun2"   => (!$tahun2) ?  "-" :  $tahun2,
+                "tahun3"   => (!$tahun3) ?  "-" :  $tahun3,
             ];
-            $success = $this->db->insert('tbl_jabatan', $data);
+            $success = $this->db->insert('tbl_jabatan', $kirim_data);
 
             if ($success) {
                 $this->session->set_flashdata('sukses', 'Berhasil menambahkan Jabatan!');
                 redirect('beranda');
             } else {
                 $this->session->set_flashdata('gagal', 'Gagal menambahkan Jabatan!');
+                redirect('beranda');
             }
           }
         }
 
     public function update_jabatan() 
     {
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required', [
+        $this->form_validation->set_rules('jabatan1', 'Jabatan', 'required', [
             'required'  => 'Jabatan harus di isi!',
         ]);
-        $this->form_validation->set_rules('tahun', 'Tahun', 'required', [
+        $this->form_validation->set_rules('tahun1', 'Tahun', 'required', [
             'required'  => 'Tahun harus di isi!',
         ]);
-
-        $data = [
-            "user"  => $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
-            "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
-        ];
-
+        
         if ($this->form_validation->run() == FALSE) {
+            $data = [
+                "user"  => $this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
+                "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
+            ];
             $this->session->set_flashdata('gagal', 'Gagal mengupdate Jabatan!');
             redirect('beranda');
         } else {
-            $id_user = $this->input->post('id_user');
-            $jabatan = $this->input->post('jabatan');
-            $tahun = $this->input->post('tahun');
+            $id_user  = $this->input->post('id_user');
+            $jabatan1 = $this->input->post('jabatan1', true);
+            $jabatan2 = $this->input->post('jabatan2', true);
+            $jabatan3 = $this->input->post('jabatan3', true);
+            $tahun1   = $this->input->post('tahun1', true);
+            $tahun2   = $this->input->post('tahun2', true);
+            $tahun3   = $this->input->post('tahun3', true);
 
-            $data = [
-                "jabatan" => $jabatan,
-                "tahun"   => $tahun
-            ];
+            $kirim_data['jabatan1'] = (!$jabatan1) ?  "-" :  $jabatan1;
+            $kirim_data['jabatan2'] = (!$jabatan2) ?  "-" :  $jabatan2;
+            $kirim_data['jabatan3'] = (!$jabatan3) ?  "-" :  $jabatan3;
+            $kirim_data['tahun1']   = (!$tahun1) ?  "-" :  $tahun1;
+            $kirim_data['tahun2']   = (!$tahun2) ?  "-" :  $tahun2;
+            $kirim_data['tahun3']   = (!$tahun3) ?  "-" :  $tahun3;
 
             $this->db->where('id_user', $id_user);
-            $success = $this->db->update('tbl_jabatan', $data);
+            $success = $this->db->update('tbl_jabatan', $kirim_data);
 
             if ($success) {
                 $this->session->set_flashdata('sukses', 'Jabatan berhasil di Update!');
                 redirect('beranda');
              } else {
                 $this->session->set_flashdata('gagal', 'Jabatan gagal di Update!');
+                redirect('beranda');
              }
         }
     }
+
+    public function logout() {
+        $data = [
+            'id_user' => '',
+            'admin' => '',
+            'masuk' => FALSE
+        ];
+        $this->session->unset_userdata($data);
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('sukses', 'Anda telah Logout!');
+        redirect('auth');
+     }
 }

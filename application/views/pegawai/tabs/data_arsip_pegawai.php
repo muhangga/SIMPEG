@@ -14,7 +14,7 @@
                         <td width="40%" class="tag pb-2">Jenis File</td>
                         <td>
                             <div class="input-group mb-3">
-                                <select class="custom-select border-success bg-white text-dark mb-3" id="jenis_file" name="jenis_file" required>
+                                <select class="custom-select border-success bg-white text-dark mb-3" id="jenis_file" name="jenis_file" value="<?= set_value('jenis_file'); ?>" required>
                                     <option selected>Jenis File</option>
                                     <option value="KTP">KTP</option>
                                     <option value="Kartu Keluarga">Kartu Keluarga</option>
@@ -30,7 +30,7 @@
                         <td class="tag pb-2">Keterangan</td>
                         <td>
                             <div class="input-group">
-                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan" required>
+                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan" required value="<?= set_value('keterangan'); ?>">
                             </div>
                             <?= form_error('keterangan', '<small class="text-danger">', '</small>'); ?>
                         </td>
@@ -40,7 +40,7 @@
                         <td class="tag pb-2">Deksripsi<br><span style="font-size: 10px; color: red; font-style: italic;">(Upload File PDF - Max 5MB)</span></td>
                         <td>
                             <div class="custom-file mt-4">
-                                <input type="file" class="custom-file-input border-success" id="deksripsi" name="deksripsi" required>
+                                <input type="file" class="custom-file-input border-success" id="deksripsi" name="deksripsi" required value="<?= set_value('deksripsi'); ?>">
                                 <label class="custom-file-label" for="deksripsi">Pilih file</label>
                                 <?= form_error('deksripsi', '<small class="text-danger">', '</small>'); ?>
                             </div>
