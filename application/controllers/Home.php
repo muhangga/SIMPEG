@@ -30,6 +30,7 @@ class Home extends CI_Controller {
             "user"  =>$this->db->get_where("tbl_user", ['email' => $this->session->userdata('email')])->row_array(),
             "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
             "data_arsip"  => $this->db->get_where("tbl_arsip_pegawai", ['id_user' => $this->session->userdata('id_user')])->result_array(),
+            "jenis_file" => $this->Main_model->get_jenis_file()->result_array()
         ];
 
         if ($this->form_validation->run() == FALSE ) {
@@ -56,7 +57,7 @@ class Home extends CI_Controller {
 
                     $kirim_data['id_user'] = $id_user;
                     $kirim_data['jenis_file'] = $jenis_file;
-                    $kirim_data['tgl_upload'] = date("Y-m-d H:i:s");
+                    $kirim_data['tgl_upload'] = date("d-m-Y H:i:s");
                     $kirim_data['keterangan'] = $keterangan;
                     $kirim_data['deksripsi'] = $this->upload->data('file_name');
 
@@ -79,7 +80,7 @@ class Home extends CI_Controller {
 
                 $kirim_data['id_user'] = $id_user;
                 $kirim_data['jenis_file'] = $jenis_file;
-                $kirim_data['tgl_upload'] = date("Y-m-d H:i:s");
+                $kirim_data['tgl_upload'] = date("d-m-Y H:i:s");
                 $kirim_data['keterangan'] = $keterangan;
 
                 $success = $this->db->insert('tbl_arsip_pegawai', $kirim_data);
@@ -127,7 +128,6 @@ class Home extends CI_Controller {
             "title" => "SIMPEG BPATP - Edit Profile",
             "user"  => $this->db->get_where("tbl_user", ['id_user' => $id_user])->row_array(),
             "jabatan"  => $this->db->get_where("tbl_jabatan", ['id_user' => $this->session->userdata('id_user')])->row_array(),
-            "get_user" => $this->Main_model->get_user($id_user)->result()
         ];
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('component/sidebar', $data);
@@ -135,7 +135,6 @@ class Home extends CI_Controller {
             $this->load->view('pegawai/edit_profile', $data);
             $this->load->view('component/footer');
         } else {
-            
             $id_user      = $this->input->post('id_user');
             $email        = $this->input->post('email');
             $nama_lengkap = $this->input->post('nama_lengkap');
@@ -302,8 +301,23 @@ class Home extends CI_Controller {
     public function data_user() 
     {
         $data = [
+            "title" => "SIMPEG BPATP - Data Pegawai",
             "user"  => $this->db->get_where("tbl_user", ['id_user' => $this->session->userdata('id_user')])->row_array(),
             "get_user" => $this->Main_model->get_user()->result_array()
+        ];
+
+        $this->load->view('component/sidebar', $data);
+        $this->load->view('component/header', $data);
+        $this->load->view('admin/data_pegawai', $data);
+        $this->load->view('component/footer');
+    }
+    
+    public function data_arsip_pegawai() 
+    {
+        $data = [
+            "title" => "SIMPEG BPATP - Data Arsip Pegawai",
+            "user"  => $this->db->get_where("tbl_user", ['id_user' => $this->session->userdata('id_user')])->row_array(),
+            "get_arsip_pegawai" => $this->Main_model->arsip_pegawai()->result_array()
         ];
 
         $this->load->view('component/sidebar', $data);
@@ -317,5 +331,43 @@ class Home extends CI_Controller {
         $this->Main_model->delete_user($id_user);
         $this->session->set_flashdata('sukses', 'Data Pegawai berhasil dihapus!');
         redirect('beranda');
+    }
+
+
+    // JENIS FILE
+    public function insert_jenis_file() 
+    {
+        $this->form_validation->set_rules('jenis_file', 'Jenis File', 'required', [
+            'required'  => 'Jenis File harus di isi!',
+        ]);
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('gagal', 'Gagal menambahkan Data');
+            redirect('beranda');
+        } else {
+            $data = array(
+                 "jenis_file" => $this->input->post('jenis_file')
+            );
+
+            $success = $this->db->insert('tbl_jenis_file', $data);
+            if ($success) {
+                $this->session->set_flashdata('sukses', 'Jenis File berhasil di tambahkan');
+                redirect('home#data-arsip-pegawai');
+             } else {
+                $this->session->set_flashdata('gagal', 'Jenis File gagal di tambahkan');
+                redirect('beranda');
+             }
+        }
+    }
+
+    public function delete_jenis_file()
+    {
+        $jenis_file = $this->input->post('jenis_file');
+        $count = count($jenis_file);
+        for ($i = 0; $i < $count; $i++) {
+            $this->Main_model->delete_jenis_file($jenis_file[$i]);
+        }
+        $this->session->set_flashdata('sukses', 'Jenis File berhasil di hapus');
+        redirect('home#data-arsip-pegawai');
     }
 }

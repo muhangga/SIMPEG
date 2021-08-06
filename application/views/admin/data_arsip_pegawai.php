@@ -1,6 +1,6 @@
 <div class="container">
 
-<div class="alert alert-info" style="font-size: 22px;">Data Pegawai</div>
+<div class="alert alert-info" style="font-size: 18px;">Data Arsip Pegawai</div>
 
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -9,37 +9,30 @@
                 <thead class="bg-success text-white" style="font-size: 15px;">
                     <tr>
                         <th>No</th>
-                        <th>Nama Lengkap</th>
                         <th>Email</th>
-                        <th>NIK</th>
-                        <th>Tempat, Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>No Telepon</th>
-                        <th>Gambar</th>
-                        <th>Role</th>
-                        <th>Action</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jenis File</th>
+                        <th>Keterangan</th>
+                        <th>Tanggal Upload</th>
+                        <th>File</th>
                     </tr>
                 </thead>
                 <tbody class="text-center" style="font-size: 14px;">
                         <?php 
                             $no = 1;
-                            foreach ($get_user as $all_user) : ?>  
+                            foreach ($get_arsip_pegawai as $all_user) : ?>  
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $all_user['nama_lengkap'] ?></td>
                             <td><?= $all_user['email'] ?></td>
-                            <td><?= $all_user['nik'] ?></td>
-                            <td><?= $all_user['tempat'] . "," . $all_user['ttl'] ?></td>
-                            <td><?= $all_user['alamat'] ?></td>
-                            <td><?= $all_user['no_telp'] ?></td>
-                            <td class="text-center">
-                                <img src="<?= base_url('assets/images/user/') . $all_user['gambar'] ?>" width="60px">
-                            </td>
-                            <td><?= $all_user['role'] ?></td>
-                            <td class="text-center">
-                                <a href="<?= base_url('Home/edit_profile/') . $all_user['id_user'] ?>" class="btn btn-primary btn-xs btn-sm mb-2"><i class="fa fa-edit p-1" id="Edit" title="Edit Profile"></i></a>
+                            <td><?= $all_user['nama_lengkap'] ?></td>
+                            <td><?= $all_user['jenis_file'] ?></td>
+                            <td><?= $all_user['keterangan'] ?></td>
+                            <td><?= $all_user['tgl_upload'] ?></td>
+                    
+                            <td>
+                                <a href="<?= base_url('assets/file/') . $all_user['deksripsi'] ?>" target="_blank" class="btn btn-primary btn-xs btn-sm"><i class="fa fa-search p-1" id="detail" title="Detail File"></i></a>
                                 
-                                <a href="<?= base_url('Home/delete_user/') . $all_user['id_user'] ?>" class="btn btn-danger btn-xs btn-sm tombol-hapus"><i class="fa fa-trash p-1" id="hapus" title="Hapus Data Pegawao"></i></a>
+                                <a href="<?= base_url('Home/hapus_file/') . $all_user['id_arsip'] ?>" class="btn btn-danger btn-xs btn-sm tombol-hapus"><i class="fa fa-trash p-1" id="hapus" title="Hapus File"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

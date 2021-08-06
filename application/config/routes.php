@@ -59,6 +59,10 @@ $route['insert_jabatan'] = 'Home/insert_jabatan';
 
 // ADMIN AREA
 $route['data_user'] = 'Home/data_user';
+$route['data_arsip_pegawai'] = 'Home/data_arsip_pegawai';
+
+// JENIS FILE 
+$route['insert_jenis_file'] = 'Home/insert_jenis_file';
 
 $route['default_controller'] = 'Auth';
 $route['404_override'] = '';

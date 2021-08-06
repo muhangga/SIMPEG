@@ -42,7 +42,7 @@
 				<a class="collapse-item" href="<?= base_url('data_user') ?>"><i class="fas fa-fw fa-users text-success mr-2"></i>
 					<span class="text-dark">Data Pegawai</span>
 				</a>
-				<a class="collapse-item" href="login.html"><i class="fas fa-fw fa-folder-open text-success mr-2"></i>
+				<a class="collapse-item" href="<?= base_url('data_arsip_pegawai') ?>"><i class="fas fa-fw fa-folder-open text-success mr-2"></i>
 					<span class="text-dark">Data Arsip Pegawai</span>
 				</a>
 			</div>

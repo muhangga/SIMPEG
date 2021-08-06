@@ -50,4 +50,25 @@ class Main_model extends CI_Model {
         $this->db->where('id_user', $id_user);
         $this->db->delete('tbl_user');
     }
+
+    public function arsip_pegawai()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_arsip_pegawai');
+        $this->db->join('tbl_user', 'tbl_user.id_user = tbl_arsip_pegawai.id_user');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_jenis_file() 
+    {
+        $query = $this->db->get('tbl_jenis_file');
+        return $query;
+    }
+
+    public function delete_jenis_file($data)
+    {
+        $this->db->where('jenis_file', $data);
+        $this->db->delete('tbl_jenis_file');
+    }
 }

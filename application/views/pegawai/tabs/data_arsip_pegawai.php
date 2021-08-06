@@ -1,6 +1,14 @@
 <div class="tab-pane fade" id="data-arsip-pegawai" role="tabpanel" aria-labelledby="data-arsip-pegawai-tab">
 
+<?php if ($user['role'] == 'admin') : ?>
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary  mt-4 mb-2 mr-3" data-toggle="modal" data-target="#jenisFile">+Tambah Jenis File</button>
+        <button type="button" class="btn btn-danger mt-4 mb-2 mr-3" data-toggle="modal" data-target="#deleteFile"><i class="fa fa-trash p-1 mr-1"></i>Hapus Jenis File</button>
+    </div>
+<?php endif; ?>
+    
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message');?>"></div>
+
 
     <div class="card shadow mt-3 border-0">
         <div class="card-body">
@@ -16,10 +24,9 @@
                             <div class="input-group mb-3">
                                 <select class="custom-select border-success bg-white text-dark mb-3" id="jenis_file" name="jenis_file" value="<?= set_value('jenis_file'); ?>" required>
                                     <option selected>Jenis File</option>
-                                    <option value="KTP">KTP</option>
-                                    <option value="Kartu Keluarga">Kartu Keluarga</option>
-                                    <option value="Dokumen Kontrak">Dokumen Kontrak</option>
-                                    <option value="Ijazah">Ijazah</option>
+                                    <?php foreach($jenis_file as $jf) : ?>
+                                        <option value="<?= $jf['jenis_file'] ?>"><?= $jf['jenis_file'] ?></option>
+                                    <?php endforeach; ?>
                                     <?= form_error('jenis_file', '<small class="text-danger">', '</small>'); ?>
                                 </select>
                             </div>
@@ -90,4 +97,71 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="jenisFile" tabindex="-1" aria-labelledby="jenisFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="jenisFileLabel">Tambah Jenis File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="<?= base_url('Home/insert_jenis_file') ?>" method="POST">
+        <div class="form-group">
+            <label for="jenis_file">Jenis File</label>
+            <input type="text" class="form-control border-success" id="jenis_file" name="jenis_file" value="<?= set_value('jenis_file'); ?>">
+            <?= form_error('jenis_file', '<small class="text-danger">', '</small>'); ?>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteFile" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteFileLabel">Hapus Jenis File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="<?= base_url('Home/delete_jenis_file') ?>" method="POST">
+
+            <?php if (!empty($jenis_file)) : ?>
+            
+                <?php foreach($jenis_file as $jf) : ?>
+                    <div class="form-group">
+                        <input type="checkbox" name="jenis_file[]" id="jenis_file[]" value="<?= $jf['jenis_file'] ?>">
+                        <span class="ml-1"><?= $jf['jenis_file'] ?></span>
+                    </div>
+                <?php endforeach; ?>
+
+            <?php else : ?>
+                <div class="form-group">
+                    <p>Tidak ada Jenis File, silahkan tambahkan terlebih dahulu!</p>
+                </div>
+            <?php endif; ?>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-danger">Hapus</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>
