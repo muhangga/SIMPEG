@@ -25,7 +25,7 @@
                                &nbsp&nbsp&nbsp Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun1']) ?  "-" :  $jabatan['tahun1'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun1']) ?  "-" :  $jabatan['tahun1']  . " - " . $jabatan['akhir1'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -48,7 +48,7 @@
                                 &nbsp&nbsp&nbsp  Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun2']) ?  "-" :  $jabatan['tahun2'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun2']) ?  "-" :  $jabatan['tahun2']  . " - " . $jabatan['akhir2'] ?>" readonly>
                             </td>
                         </tr>
 
@@ -71,7 +71,7 @@
                                 &nbsp&nbsp&nbsp  Tahun
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun3']) ?  "-" :  $jabatan['tahun3'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-2" value="<?php echo (!$jabatan['tahun3']) ?  "-" :  $jabatan['tahun3']  . " - " . $jabatan['akhir3'] ?>" readonly>
                             </td>
                         </tr>
                         

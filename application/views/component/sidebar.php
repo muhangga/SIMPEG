@@ -1,5 +1,5 @@
 <div class="banner">
-<img src="<?= base_url('assets/images/banner.png') ?>" width="100%">
+<img src="<?= base_url('assets/images/banner1.png') ?>" width="100%">
 </div>
 
 <div class="marque">

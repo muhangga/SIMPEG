@@ -230,6 +230,9 @@ class Home extends CI_Controller {
             $tahun1 = $this->input->post('tahun1', true);
             $tahun2 = $this->input->post('tahun2', true);
             $tahun3 = $this->input->post('tahun3', true);
+            $akhir1 = $this->input->post('akhir1', true);
+            $akhir2 = $this->input->post('akhir2', true);
+            $akhir3 = $this->input->post('akhir3', true);
 
             $kirim_data = [
                 "id_user"  => $id_user,
@@ -239,6 +242,9 @@ class Home extends CI_Controller {
                 "tahun1"   => $tahun1,
                 "tahun2"   => (!$tahun2) ?  "-" :  $tahun2,
                 "tahun3"   => (!$tahun3) ?  "-" :  $tahun3,
+                "akhir1"    => $akhir1,
+                "akhir2"   => (!$akhir2) ?  "-" :  $akhir2,
+                "akhir3"   => (!$akhir3) ?  "-" :  $akhir3,
             ];
             $success = $this->db->insert('tbl_jabatan', $kirim_data);
 
@@ -260,6 +266,9 @@ class Home extends CI_Controller {
         $this->form_validation->set_rules('tahun1', 'Tahun', 'required', [
             'required'  => 'Tahun harus di isi!',
         ]);
+        $this->form_validation->set_rules('akhir1', 'Tahun', 'required', [
+            'required'  => 'Tahun harus di isi!',
+        ]);
         
         if ($this->form_validation->run() == FALSE) {
             $data = [
@@ -276,6 +285,9 @@ class Home extends CI_Controller {
             $tahun1   = $this->input->post('tahun1', true);
             $tahun2   = $this->input->post('tahun2', true);
             $tahun3   = $this->input->post('tahun3', true);
+            $akhir1 = $this->input->post('akhir1', true);
+            $akhir2 = $this->input->post('akhir2', true);
+            $akhir3 = $this->input->post('akhir3', true);
 
             $kirim_data['jabatan1'] = (!$jabatan1) ?  "-" :  $jabatan1;
             $kirim_data['jabatan2'] = (!$jabatan2) ?  "-" :  $jabatan2;
@@ -283,6 +295,9 @@ class Home extends CI_Controller {
             $kirim_data['tahun1']   = (!$tahun1) ?  "-" :  $tahun1;
             $kirim_data['tahun2']   = (!$tahun2) ?  "-" :  $tahun2;
             $kirim_data['tahun3']   = (!$tahun3) ?  "-" :  $tahun3;
+            $kirim_data['akhir1']   = (!$akhir1) ?  "-" :  $akhir1;
+            $kirim_data['akhir2']   = (!$akhir2) ?  "-" :  $akhir2;
+            $kirim_data['akhir3']   = (!$akhir3) ?  "-" :  $akhir3;
 
             $this->db->where('id_user', $id_user);
             $success = $this->db->update('tbl_jabatan', $kirim_data);
