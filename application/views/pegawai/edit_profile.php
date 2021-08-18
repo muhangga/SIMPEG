@@ -2,13 +2,13 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-8">
             <h5 class="alert alert-info" style="font-size: 16px;">Update Profile Anda!</h5>
         </div>
     </div>
     
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-10 col-12">
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 col-md-8 col-12">
             <div class="card shadow mt-3 border-0">
                 <div class="card-body">
 
@@ -72,6 +72,24 @@
                                             <label for="no_telp">No Telepon</label>
                                             <input type="text" class="form-control border-success" id="no_telp" name="no_telp" value="<?= $user['no_telp'] ?>">
                                             <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="bpjs">No BPJS</label>
+                                            <input type="text" class="form-control border-success" id="bpjs" name="bpjs" value="<?= (!$user['bpjs']) ?  "-" :  $user['bpjs'] ?>">
+                                            <?= form_error('bpjs', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nip">NIP PPNPN</label>
+                                            <input type="text" class="form-control border-success" id="nip" name="nip" value="<?= (!$user['nip']) ?  "-" :  $user['nip'] ?>">
+                                            <?= form_error('nip', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="npwp">NPWP</label>
+                                            <input type="text" class="form-control border-success" id="npwp" name="npwp" value="<?= (!$user['npwp']) ?  "-" :  $user['npwp'] ?>">
+                                            <?= form_error('npwp', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         
                                         <button type="submit" class="btn btn-success btn-block py-2" name="edit_profile">Edit Profile</button>

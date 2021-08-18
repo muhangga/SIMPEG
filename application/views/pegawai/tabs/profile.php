@@ -7,7 +7,7 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-12 text-center">
-                    <img src="<?= base_url('assets/images/user/') . $user['gambar'] ?> ?>" <?php echo ($user['gambar'] !== 'user.png') ?  "width='180px' height='280px' style='background-size: cover; object-fit: cover; border-radius: 10px;'"  : "width='200px'" ?> class="mb-5 mt-3" alt="Foto Pegawai">
+                    <img src="<?= base_url('assets/images/user/') . $user['gambar'] ?> ?>" <?php echo ($user['gambar'] !== 'user.png') ?  "width='180px' height='280px' style='background-size: cover; object-fit: cover; border-radius: 10px;'"  : "width='160px'" ?> class="mb-5 mt-3" alt="Foto Pegawai">
                 </div>
                 <div class="col-12 col-md-8 col-lg-8 mt-4">
                     <table width="100%">
@@ -43,16 +43,52 @@
                                 Alamat Rumah
                             </td>
                             <td>
+                                <textarea class="form-control bg-white border-success text-dark" cols="10" rows="3" readonly><?= $user['alamat'] ?></textarea>
+                            </td>
+                        </tr>
+
+                        <!-- <tr>
+                            <td class="tag pb-4">
+                                Alamat Rumah
+                            </td>
+                            <td>
                                 <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['alamat'] ?>" readonly>
+                            </td>
+                        </tr> -->
+
+                        <tr>
+                            <td class="tag pb-4 pt-4">
+                                No Telepon
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4 mt-4" value="<?= $user['no_telp'] ?>" readonly>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="tag pb-4">
-                                No Telepon
+                                No BPJS
                             </td>
                             <td>
-                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= $user['no_telp'] ?>" readonly>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= (!$user['bpjs']) ?  "-" :  $user['bpjs'] ?>" readonly>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tag pb-4">
+                                NIP
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= (!$user['nip']) ?  "-" :  $user['nip'] ?>" readonly>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tag pb-4">
+                                NPWP
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border-success bg-white text-dark mb-4" value="<?= (!$user['npwp']) ?  "-" :  $user['npwp'] ?>" readonly>
                             </td>
                         </tr>
                     </table>

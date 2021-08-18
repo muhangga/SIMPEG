@@ -42,7 +42,7 @@ class Home extends CI_Controller {
 
             if (!empty($_FILES['deksripsi']['name'])) {
                 $file = str_replace(" ", "_", $_FILES['deksripsi']['name']);
-                $config['allowed_types'] = 'pdf';
+                $config['allowed_types'] = 'pdf|jpg|jpeg|png';
                 $config['max_size']      = '4096';
                 $config['upload_path'] = './assets/file/';
                 $config['file_name']  = $file;
@@ -70,7 +70,7 @@ class Home extends CI_Controller {
                         $this->session->set_flashdata('gagal', 'Data gagal ditambahkan!');
                     }
                 } else {
-                    $this->session->set_flashdata('gagal', 'File harus berupa PDF!');
+                    $this->session->set_flashdata('gagal', 'File harus berupa PDF atau jpg/png!');
                     redirect('beranda');
                 }
             } else {
@@ -143,6 +143,9 @@ class Home extends CI_Controller {
             $ttl          = $this->input->post('ttl');
             $alamat       = $this->input->post('alamat');
             $no_telp      = $this->input->post('no_telp');
+            $bpjs         = $this->input->post('bpjs');
+            $nip          = $this->input->post('nip');
+            $npwp         = $this->input->post('npwp');
 
             $upload_image = $_FILES['gambar']['name'];
 
@@ -161,14 +164,17 @@ class Home extends CI_Controller {
                     }
                     $new_image = $this->upload->data('file_name');
 
-                    $kirim_data['email'] = $email;
+                    $kirim_data['email']        = $email;
                     $kirim_data['nama_lengkap'] = $nama_lengkap;
-                    $kirim_data['nik'] = $nik;
-                    $kirim_data['tempat'] = $tempat;
-                    $kirim_data['ttl'] = $ttl;
-                    $kirim_data['alamat'] = $alamat;
-                    $kirim_data['no_telp'] = $no_telp;
-                    $kirim_data['gambar'] = $new_image;
+                    $kirim_data['nik']          = $nik;
+                    $kirim_data['tempat']       = $tempat;
+                    $kirim_data['ttl']          = $ttl;
+                    $kirim_data['alamat']       = $alamat;
+                    $kirim_data['no_telp']      = $no_telp;
+                    $kirim_data['gambar']       = $new_image;
+                    $kirim_data['bpjs']         = $bpjs;
+                    $kirim_data['nip']          = $nip;
+                    $kirim_data['npwp']         = $npwp;
 
                     $success = $this->Main_model->update_profile($id_user, $kirim_data);
 
@@ -184,13 +190,16 @@ class Home extends CI_Controller {
                     redirect('beranda');
                 }
             } else {
-                $kirim_data['email'] = $email;
+                $kirim_data['email']        = $email;
                 $kirim_data['nama_lengkap'] = $nama_lengkap;
-                $kirim_data['nik'] = $nik;
-                $kirim_data['tempat'] = $tempat;
-                $kirim_data['ttl'] = $ttl;
-                $kirim_data['alamat'] = $alamat;
-                $kirim_data['no_telp'] = $no_telp;
+                $kirim_data['nik']          = $nik;
+                $kirim_data['tempat']       = $tempat;
+                $kirim_data['ttl']          = $ttl;
+                $kirim_data['alamat']       = $alamat;
+                $kirim_data['no_telp']      = $no_telp;
+                $kirim_data['bpjs']         = $bpjs;
+                $kirim_data['nip']          = $nip;
+                $kirim_data['npwp']         = $npwp;
 
                 $success = $this->Main_model->update_profile($id_user, $kirim_data);
 

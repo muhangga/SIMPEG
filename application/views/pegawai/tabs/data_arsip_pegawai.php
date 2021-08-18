@@ -37,7 +37,7 @@
                         <td class="tag pb-2">Keterangan</td>
                         <td>
                             <div class="input-group">
-                                <input type="text" class="form-control border-success bg-white text-dark" name="keterangan" required value="<?= set_value('keterangan'); ?>">
+                                <input type="text" class="form-control border-success bg-white text-dark mb-3" name="keterangan" required value="<?= set_value('keterangan'); ?>">
                             </div>
                             <?= form_error('keterangan', '<small class="text-danger">', '</small>'); ?>
                         </td>
